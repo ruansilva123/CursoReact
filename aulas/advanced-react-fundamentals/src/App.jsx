@@ -8,15 +8,35 @@ import Props from './components/Props';
 import DestructuringProps from './components/DestructuringProps';
 import Fragments from './components/Fragments';
 import Container from './components/Container';
+import ExecuteFunction from './components/ExecuteFunction';
+import Message from './components/Message';
+import ChangeMessageState from './components/ChangeMessageState';
+import UserDetails from './components/UserDetails';
 
 function App() {
   const name = "Props Fulano";
-  const [username] = useState("Ciclano State");
+  const [userName] = useState("Ciclano State");
 
   const cars = [
     {id: 1, brand: "Ferrari", color: "Yellow", newCar: true, km: 0},
     {id: 1, brand: "KIA", color: "White", newCar: false, km: 1200},
     {id: 1, brand: "Renault", color: "Blue", newCar: true, km: 0}
+  ];
+
+  function showMessage() {
+    console.log("Evento do componente pai");
+  };
+
+  const [message, setMessage] = useState("");
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
+  };
+
+  const usersChallenge = [
+    {name: "Ruan Carlos", age: 19, job: "Aprendiz em soluções digitais"},
+    {name: "Ciclano Costa", age: 17, job: "Aprendiz em solda"},
+    {name: "Fulano Silva", age: 16, job: "Mecânico"}
   ]
 
   return (
@@ -36,7 +56,7 @@ function App() {
       {/* props */}
       <Props name="Ruan" />
       <Props name={name} />
-      <Props name={username} />
+      <Props name={userName} />
       {/* destructuring props */}
       <DestructuringProps brand="VW" km={100000} color="blue" newCar={false}/>
       <DestructuringProps brand="Ford" km={0} color="red" newCar={true}/>
@@ -56,6 +76,16 @@ function App() {
       <Container text="some text">
         <p>It is a container content</p>
       </Container>
+      {/* Execute function */}
+      <ExecuteFunction myFunction={showMessage} />
+      {/* state lift */}
+      <Message msg={message}/>
+      <ChangeMessageState handleMessage={handleMessage} />
+      {/* Challenge number four */}
+      <h2>Challenge Number Four</h2>
+      {usersChallenge.map((user) => (
+        <UserDetails name={user.name} age={user.age} job={user.job} />
+      ))}
     </>
   );
 };
