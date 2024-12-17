@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import MyComponent from './components/MyComponent';
+import Title from './components/Title';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const n = 15;
+  const redTitle = false;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div className='App'>
+      {/* global CSS */}
+      <h1>React with CSS</h1>
+      {/* component CSS */}
+      <MyComponent />
+      <p>This is a App.jsx paragraph</p>
+      {/* inline CSS */}
+      <p style={{color: "blue", padding: "25px", borderTop: "2px solid red"}}>
+        This element was styled with inline CSS
       </p>
-    </>
-  )
-}
+      {/* dynamic inline CSS */}
+      <p style={n < 10 ? ({color: "purple"}) : ({color: "pink"})}>
+        This element was styled with dynamic inline CSS
+      </p>
+      <p style={n < 10 ? ({color: "purple"}) : null}>
+        This element was styled with dynamic inline CSS
+      </p>
+      {/* dinamic class */}
+      <h2 className={redTitle ? "red-title" : "title"}>This title have dinamic class</h2>
+      {/* CSS modules */}
+      <Title />
+      <h1 className='my_title'>My title</h1>
+    </div>
+  );
+};
 
-export default App
+export default App;
