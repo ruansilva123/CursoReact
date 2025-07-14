@@ -13,7 +13,7 @@ Este repositório foi criado para axiliar meu aprendizado da biblioteca **React*
 
 ## 🚀 Projetos Desenvolvidos
 Aqui você encontrará os principais projetos criados ao longo do curso. 
-> - 
+> - [Secret Word](https://github.com/ruansilva123/secret-word): Game to try to find the random word and earn points.
 
 ## 🔗 Sobre o curso
 
